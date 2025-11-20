@@ -1,7 +1,7 @@
 const mongoose=require('mongoose')
 
 function connectDB(){
-    mongoose.connect("mongodb://localhost:27017/zwiggy")
+    mongoose.connect(precess.env.MONGODB_URI)
     .then(()=>{
         console.log("Database Connected")
     })
