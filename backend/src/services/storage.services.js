@@ -1,4 +1,4 @@
-const ImageKit=require("imagekit")
+const ImageKit=require("@imagekit/nodejs")
 
 const imagekit=new ImageKit({
     publicKey:process.env.IMAGEKIT_PUBLIC_KEY,
@@ -15,6 +15,6 @@ async function uploadFile(file,fileName){
     return result
 }
 
-MediaSourceHandle.exports={
+module.exports={
     uploadFile
 }

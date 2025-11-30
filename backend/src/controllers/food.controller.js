@@ -3,9 +3,9 @@ const storageService=require("../services/storage.services")
 const { v4: uuidv4 } = require('uuid');
 
 async function createFood(req,res){
-    const fileUploadResult=await storageService.uploadFile(req.file.buffer,uuid())
+    const fileUploadResult=await storageService.uploadFile(req.file.buffer,uuidv4())
 
-    const foodItem=await foorModed.create({
+    const foodItem=await foodModel.create({
         name:req.body.name,
         description:req.body.description,
         video:fileUploadResult.url,
@@ -18,6 +18,15 @@ async function createFood(req,res){
     })
 }
 
+async function getFoodItems(req,res){
+     const foodItems=await foodModel.find({})
+     res.status(200).json({
+        message:"food created successfully",
+        food:foodItems
+    })
+}
+
 module.exports={
-    createFood
+    createFood,
+    getFoodItems
 }
